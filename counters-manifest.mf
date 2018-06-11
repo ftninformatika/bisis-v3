@@ -1,0 +1,2 @@
+Main-Class: com.gint.app.bisis.counters.CounterApp
+Class-Path: lib/classes12.jar lib/sapdbc.jar lib/gint-utils.jar lib/ilf-gpl.jar

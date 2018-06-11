@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="NabavkaPoRacunima_part" language="java" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.GridHeight" value="5"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="5"/>
+	<property name="com.jasperassistant.designer.DataSource" value="Empty"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<field name="invbr" class="java.lang.String">
+		<fieldDescription><![CDATA[@invbr]]></fieldDescription>
+	</field>
+	<field name="cena" class="java.lang.String">
+		<fieldDescription><![CDATA[@cena]]></fieldDescription>
+	</field>
+	<field name="isTotal" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[@isTotal]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="16">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="130" height="16" backcolor="#c0c0c0">
+					<printWhenExpression><![CDATA[$F{isTotal}]]></printWhenExpression>
+				</reportElement>
+				<graphicElement pen="None"/>
+			</rectangle>
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="80" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{invbr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="80" y="0" width="50" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cena}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,2 @@
+Main-Class: com.gint.app.bisis.backup.BackupApp
+Class-Path: textsrv.jar lib/jgl3.1.1.jar lib/layout.jar lib/classes12.jar lib/sapdbc.jar lib/gint-utils.jar lib/ilf-gpl.jar

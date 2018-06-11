@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LELibrarian [
+  <!ELEMENT LELibrarian (defPubType, defProcLevel, defManLevel, prefixes, prefixNames, formats, defaultFormat, contextList)>
+  <!ELEMENT defPubType (#PCDATA)>
+  
+  <!ELEMENT defProcLevel (#PCDATA)>
+  
+  <!ELEMENT defManLevel (#PCDATA)>
+  
+  <!ELEMENT prefixes (prefix*)>
+  
+  <!ELEMENT prefix EMPTY>
+  <!ATTLIST prefix 
+      name CDATA #REQUIRED>
+  
+  <!ELEMENT prefixNames (prefixName*)>
+  
+  <!ELEMENT prefixName EMPTY>
+  <!ATTLIST prefixName 
+      name CDATA #REQUIRED
+      desc CDATA #REQUIRED>
+      
+  <!ELEMENT formats (predefinisan*)>
+  
+  <!ELEMENT predefinisan (#PCDATA)>
+  <!ATTLIST predefinisan 
+      naziv CDATA #REQUIRED>
+      
+  <!ELEMENT defaultFormat (#PCDATA)>
+  
+  <!ELEMENT contextList (context*)>
+  
+  <!ELEMENT context (pubType, procLevel, manLevel, typeSubfields, procSubfields, manSubfields)>
+  
+  <!ELEMENT pubType (#PCDATA)>
+  
+  <!ELEMENT procLevel (#PCDATA)>
+  
+  <!ELEMENT manLevel (#PCDATA)>
+  
+  <!ELEMENT typeSubfields (LESubfield*)>
+  
+  <!ELEMENT procSubfields (LESubfield*)>
+  
+  <!ELEMENT manSubfields (LESubfield*)>
+  
+  <!ELEMENT LESubfield (#PCDATA)>
+  <!ATTLIST LESubfield 
+      defValue CDATA #REQUIRED
+      field CDATA    #REQUIRED
+      subfield CDATA #REQUIRED>
+]>
+
+
+<LELibrarian>
+  <defPubType>M1</defPubType>
+  <defProcLevel>10</defProcLevel>
+  <defManLevel>1</defManLevel>
+  <prefixes>
+    <prefix name="AU"></prefix>
+    <prefix name="TI"></prefix>
+    <prefix name="PY"></prefix>
+    <prefix name="BN"></prefix>
+    <prefix name="KW"></prefix>
+  </prefixes>
+  <prefixNames>
+    <prefixName desc="Namena nabavke" name="AP"></prefixName>
+    <prefixName desc="Kreator zapisa" name="CR"></prefixName>
+    <prefixName desc="Formalna predmetna odredn." name="FS"></prefixName>    
+  </prefixNames>
+  <formats>
+    <predefinisan naziv="full">full format</predefinisan>
+    <predefinisan naziv="1">AU, TI</predefinisan>
+  </formats>
+  <defaultFormat>full</defaultFormat>
+<contextList>
+  <context>
+    <pubType>A1</pubType>
+    <procLevel>10</procLevel>
+    <manLevel>1</manLevel>
+    <typeSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </typeSubfields>
+    <procSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </procSubfields>
+    <manSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </manSubfields>
+  </context>
+  <context>
+    <pubType>DS</pubType>
+    <procLevel>10</procLevel>
+    <manLevel>1</manLevel>
+    <typeSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </typeSubfields>
+    <procSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </procSubfields>
+    <manSubfields>
+      <LESubfield defValue="" field="001" subfield="7"></LESubfield>
+      <LESubfield defValue="n" field="001" subfield="a"></LESubfield>    
+      <LESubfield defValue="*null*" field="992" subfield="6"></LESubfield>
+    </manSubfields>
+  </context>
+</contextList>
+</LELibrarian>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="izdatovraceno" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="510" leftMargin="43" rightMargin="40" topMargin="43" bottomMargin="43">
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Millimeters"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="Arial" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="begdate" class="java.lang.String">
+	</parameter>
+	<parameter name="enddate" class="java.lang.String">
+	</parameter>
+	<parameter name="nazivogr" class="java.lang.String">
+	</parameter>
+	<field name="Sfr" class="java.lang.String">
+		<fieldDescription><![CDATA[Sfr]]></fieldDescription>
+	</field>
+	<field name="NoI" class="java.lang.String">
+		<fieldDescription><![CDATA[NoI]]></fieldDescription>
+	</field>
+	<field name="NoV" class="java.lang.String">
+		<fieldDescription><![CDATA[NoV]]></fieldDescription>
+	</field>
+	<title>
+		<band height="89">
+			<staticText>
+				<reportElement positionType="Float" x="42" y="9" width="424" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Statistika izdatih i vraćenih knjiga po jeziku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="169" y="61" width="53" height="15"/>
+				<textElement/>
+				<text><![CDATA[period: od]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="222" y="61" width="65" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{begdate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="287" y="61" width="16" height="15"/>
+				<textElement/>
+				<text><![CDATA[do]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="302" y="61" width="57" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{enddate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="43" y="31" width="424" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nazivogr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<line>
+				<reportElement positionType="Float" x="57" y="49" width="397" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="57" y="46" width="397" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="60" y="30" width="114" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[šifra jezika]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="184" y="26" width="1" height="20"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="195" y="30" width="115" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[izdato primeraka]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="326" y="26" width="1" height="20"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="339" y="30" width="104" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[vraćeno primeraka]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement positionType="Float" x="60" y="3" width="114" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Sfr}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="57" y="19" width="397" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="184" y="-1" width="1" height="20"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="196" y="3" width="116" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NoI}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="326" y="0" width="1" height="20"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="341" y="3" width="103" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NoV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

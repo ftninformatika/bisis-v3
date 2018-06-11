@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridHeight" value="5"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="5"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<parameter name="subreport" class="net.sf.jasperreports.engine.JasperReport">
+	</parameter>
+	<parameter name="today" class="java.lang.String">
+	</parameter>
+	<parameter name="dateRange" class="java.lang.String">
+	</parameter>
+	<field name="racunid" class="java.lang.String">
+		<fieldDescription><![CDATA[@id]]></fieldDescription>
+	</field>
+	<field name="totalBooks" class="java.lang.String">
+		<fieldDescription><![CDATA[@totalBooks]]></fieldDescription>
+	</field>
+	<title>
+		<band height="51">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="556" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nabavka po računima]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="20" width="556" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{dateRange}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="440" y="35" width="44" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Na dan:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="485" y="35" width="70" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{today}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="35">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="1" width="41" height="15"/>
+				<textElement/>
+				<text><![CDATA[Račun:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="41" y="1" width="80" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{racunid}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="15" width="556" height="20"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("/racun/stavka")]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{subreport}]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="Float" x="0" y="14" width="556" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="140" y="0" width="76" height="16"/>
+				<textElement/>
+				<text><![CDATA[ukupno knjiga:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="215" y="0" width="86" height="16"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totalBooks}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

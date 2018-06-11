@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="submemberbook" language="java" pageWidth="525" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="525" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisisbg2"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<parameter name="datum" class="java.sql.Timestamp">
+	</parameter>
+	<parameter name="ogranak" class="java.lang.Integer">
+	</parameter>
+	<queryString><![CDATA[select u.id, u.branch_id, s.mmbr_type, sg.sdate, sg.cost, mt.name
+from users u, single s,signing sg, mmbr_types mt
+where sg.sdate = $P{datum} and u.branch_id = $P{ogranak} and u.id = s.user_id
+and u.id = sg.single_id and mt.id = s.mmbr_type
+order by s.mmbr_type]]></queryString>
+	<field name="BRANCH_ID" class="java.math.BigDecimal">
+	</field>
+	<field name="COST" class="java.math.BigDecimal">
+	</field>
+	<field name="ID" class="java.lang.String">
+	</field>
+	<field name="MMBR_TYPE" class="java.math.BigDecimal">
+	</field>
+	<field name="NAME" class="java.lang.String">
+	</field>
+	<field name="SDATE" class="java.sql.Timestamp">
+	</field>
+	<variable name="cost" class="java.math.BigDecimal" resetType="Group" resetGroup="kategorija" calculation="Sum">
+		<variableExpression><![CDATA[$F{COST}]]></variableExpression>
+	</variable>
+	<variable name="brukupno" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{ID}]]></variableExpression>
+	</variable>
+	<variable name="costukupno" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{COST}]]></variableExpression>
+	</variable>
+	<variable name="brkor" class="java.lang.Integer" resetType="Group" resetGroup="kategorija" calculation="Count">
+		<variableExpression><![CDATA[$F{ID}]]></variableExpression>
+	</variable>
+	<group name="kategorija">
+		<groupExpression><![CDATA[$F{MMBR_TYPE}]]></groupExpression>
+		<groupFooter>
+		<band height="20">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="55" y="4" width="257" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="404" y="4" width="80" height="16"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{cost}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="19" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="315" y="4" width="80" height="16"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{brkor}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="25">
+			<staticText>
+				<reportElement positionType="Float" x="55" y="4" width="259" height="20"/>
+				<textElement/>
+				<text><![CDATA[Vrsta plaćanja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="315" y="4" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Broj korisnika]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="404" y="4" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="24" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="22" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</title>
+	<summary>
+		<band height="25">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="315" y="6" width="80" height="17"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{brukupno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="404" y="6" width="80" height="17"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{costukupno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="55" y="6" width="252" height="17"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ukupno]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="1" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

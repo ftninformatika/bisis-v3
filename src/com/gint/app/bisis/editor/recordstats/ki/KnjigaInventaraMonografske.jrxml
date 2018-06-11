@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="NabavkaPoNacinu" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="3"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="3"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<parameter name="dateRange" class="java.lang.String">
+	</parameter>
+	<parameter name="today" class="java.lang.String">
+	</parameter>
+	<field name="rbr" class="java.lang.String">
+		<fieldDescription><![CDATA[rbr]]></fieldDescription>
+	</field>
+	<field name="datum" class="java.lang.String">
+		<fieldDescription><![CDATA[datum]]></fieldDescription>
+	</field>
+	<field name="opis" class="java.lang.String">
+		<fieldDescription><![CDATA[opis]]></fieldDescription>
+	</field>
+	<field name="povez" class="java.lang.String">
+		<fieldDescription><![CDATA[povez]]></fieldDescription>
+	</field>
+	<field name="dim" class="java.lang.String">
+		<fieldDescription><![CDATA[dim]]></fieldDescription>
+	</field>
+	<field name="nabavka" class="java.lang.String">
+		<fieldDescription><![CDATA[nabavka]]></fieldDescription>
+	</field>
+	<field name="cena" class="java.lang.String">
+		<fieldDescription><![CDATA[cena]]></fieldDescription>
+	</field>
+	<field name="signatura" class="java.lang.String">
+		<fieldDescription><![CDATA[signatura]]></fieldDescription>
+	</field>
+	<field name="napomena" class="java.lang.String">
+		<fieldDescription><![CDATA[napomena]]></fieldDescription>
+	</field>
+	<field name="ogr" class="java.lang.String">
+		<fieldDescription><![CDATA[ogr]]></fieldDescription>
+	</field>
+	<title>
+		<band height="57">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="15" width="802" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Knjiga inventara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="256" height="20"/>
+				<textElement/>
+				<text><![CDATA[Narodna biblioteka „Jovan Popović“ Kikinda]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="37" width="802" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{dateRange}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<rectangle>
+				<reportElement positionType="Float" x="657" y="0" width="76" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="609" y="0" width="49" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="423" y="0" width="187" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="372" y="0" width="52" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="339" y="0" width="34" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="732" y="0" width="46" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="777" y="0" width="25" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="43" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="43" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Redni
+broj]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="42" y="0" width="52" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="0" width="52" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Datum]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="93" y="0" width="247" height="30"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="93" y="0" width="247" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Autor, naslov, broj sveske (toma),
+mesto izdavanja, izdavač, godina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="777" y="0" width="25" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ogr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="732" y="0" width="46" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Napomena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="657" y="0" width="76" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Signatura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="0" width="187" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Način nabavke]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="609" y="0" width="49" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="339" y="0" width="34" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Vrsta poveza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="372" y="0" width="52" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Dimenzije]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="32">
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="31" width="802" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="42" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="93" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="339" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="423" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="423" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="372" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="801" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="732" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="657" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="609" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="777" y="0" width="1" height="32"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="39" height="32"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rbr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="45" y="0" width="49" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{datum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="96" y="0" width="243" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{opis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="342" y="0" width="31" height="32"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{povez}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="375" y="0" width="49" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="426" y="0" width="183" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nabavka}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="611" y="0" width="43" height="32"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cena}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="660" y="0" width="73" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{signatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="735" y="0" width="42" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{napomena}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="780" y="0" width="21" height="32"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ogr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

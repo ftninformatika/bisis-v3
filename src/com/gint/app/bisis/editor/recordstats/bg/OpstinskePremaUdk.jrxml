@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="OpstinskePremaUdk"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="786"
+		 columnSpacing="0"
+		 leftMargin="28"
+		 rightMargin="28"
+		 topMargin="28"
+		 bottomMargin="28"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="dateRange" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["opseg datuma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="today" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["danas"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="libraryName" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["Назив библиотеке"]]></defaultValueExpression>
+	</parameter>
+
+	<field name="ogr" class="java.lang.String">
+		<fieldDescription><![CDATA[ogr]]></fieldDescription>
+	</field>
+	<field name="n0" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n0]]></fieldDescription>
+	</field>
+	<field name="p0" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p0]]></fieldDescription>
+	</field>
+	<field name="n1" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n1]]></fieldDescription>
+	</field>
+	<field name="p1" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p1]]></fieldDescription>
+	</field>
+	<field name="n2" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n2]]></fieldDescription>
+	</field>
+	<field name="p2" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p2]]></fieldDescription>
+	</field>
+	<field name="n3" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n3]]></fieldDescription>
+	</field>
+	<field name="p3" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p3]]></fieldDescription>
+	</field>
+	<field name="n5" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n5]]></fieldDescription>
+	</field>
+	<field name="p5" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p5]]></fieldDescription>
+	</field>
+	<field name="n6" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n6]]></fieldDescription>
+	</field>
+	<field name="p6" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p6]]></fieldDescription>
+	</field>
+	<field name="n7" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n7]]></fieldDescription>
+	</field>
+	<field name="p7" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p7]]></fieldDescription>
+	</field>
+	<field name="n8d" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n8d]]></fieldDescription>
+	</field>
+	<field name="p8d" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p8d]]></fieldDescription>
+	</field>
+	<field name="n8s" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n8s]]></fieldDescription>
+	</field>
+	<field name="p8s" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p8s]]></fieldDescription>
+	</field>
+	<field name="n9" class="java.lang.Integer">
+		<fieldDescription><![CDATA[n9]]></fieldDescription>
+	</field>
+	<field name="p9" class="java.lang.Integer">
+		<fieldDescription><![CDATA[p9]]></fieldDescription>
+	</field>
+	<field name="nd" class="java.lang.Integer">
+		<fieldDescription><![CDATA[nd]]></fieldDescription>
+	</field>
+	<field name="pd" class="java.lang.Integer">
+		<fieldDescription><![CDATA[pd]]></fieldDescription>
+	</field>
+	<field name="nu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[nu]]></fieldDescription>
+	</field>
+	<field name="pu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[pu]]></fieldDescription>
+	</field>
+	<field name="ns" class="java.lang.Integer">
+		<fieldDescription><![CDATA[ns]]></fieldDescription>
+	</field>
+	<field name="ps" class="java.lang.Integer">
+		<fieldDescription><![CDATA[ps]]></fieldDescription>
+	</field>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="73"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="300"
+						height="16"
+						key="textField-100"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{libraryName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="16"
+						width="785"
+						height="19"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Број инвентарисаних јединица према УДК]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="35"
+						width="785"
+						height="18"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dateRange}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="659"
+						y="52"
+						width="42"
+						height="13"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[На дан:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="704"
+						y="52"
+						width="81"
+						height="18"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{today}]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="172"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="110"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-4"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="136"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-5"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="110"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-6"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="58"
+						height="172"
+						key="staticText-7"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font/>
+					</textElement>
+				<text><![CDATA[огранак]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="162"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-8"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="188"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-9"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="162"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-10"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="214"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-11"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="240"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-12"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="214"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-13"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="266"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-14"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="292"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-15"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="266"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-16"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[5]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="318"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-17"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[6]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="318"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-18"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="344"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-19"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="370"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-20"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="396"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-21"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="370"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-22"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[7]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="422"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-23"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="448"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-24"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="422"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-25"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[8  домаћа]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="474"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-26"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="500"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-27"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="474"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-28"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[8  страна]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="526"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-29"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="552"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-30"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="526"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-31"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[9]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="578"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-32"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="604"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-33"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="578"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-34"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[дечија]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="734"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-35"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="760"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-36"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="734"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-37"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[сликовнице]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="630"
+						y="81"
+						width="52"
+						height="91"
+						key="staticText-38"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="682"
+						y="81"
+						width="52"
+						height="91"
+						key="staticText-39"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="630"
+						y="0"
+						width="104"
+						height="81"
+						key="staticText-40"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[укупно]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="58"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-41"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број наслова]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="84"
+						y="81"
+						width="26"
+						height="91"
+						key="staticText-42"/>
+					<box rightPadding="1" bottomPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="Left">
+						<font fontName="SansSerif" isPdfEmbedded ="false" pdfEncoding ="Cp1251"/>
+					</textElement>
+				<text><![CDATA[ број примерака ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="58"
+						y="0"
+						width="52"
+						height="81"
+						key="staticText-43"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[0]]></text>
+				</staticText>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="21"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="58"
+						height="21"
+						key="textField-3"/>
+					<box leftPadding="2" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ogr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="110"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-4"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="136"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-5"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="162"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-6"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="188"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-7"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="214"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-8"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="240"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-9"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="266"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-10"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n5}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="292"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-11"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p5}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="318"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-12"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n6}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="344"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-13"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p6}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="370"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-14"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n7}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="396"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-15"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p7}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="422"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-16"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n8d}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="448"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-17"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p8d}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="474"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-18"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n8s}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="500"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-19"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p8s}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="526"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-20"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n9}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="552"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-21"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p9}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="578"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-22"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{nd}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="604"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-23"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{pd}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="760"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-25"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{ps}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="630"
+						y="0"
+						width="52"
+						height="21"
+						key="textField-26"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{nu}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="682"
+						y="0"
+						width="52"
+						height="21"
+						key="textField-27"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{pu}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="734"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-28"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{ns}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="58"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-29"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{n0}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="84"
+						y="0"
+						width="26"
+						height="21"
+						key="textField-30"/>
+					<box rightPadding="1" topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{p0}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="1"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

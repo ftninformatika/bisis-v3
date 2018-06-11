@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="PogociPoOgrancima" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridHeight" value="3"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="3"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<parameter name="date" class="java.lang.String">
+		<parameterDescription><![CDATA[Datum izvestaja]]></parameterDescription>
+	</parameter>
+	<parameter name="query1" class="java.lang.String">
+	</parameter>
+	<parameter name="query2" class="java.lang.String">
+	</parameter>
+	<parameter name="query3" class="java.lang.String">
+	</parameter>
+	<parameter name="query4" class="java.lang.String">
+	</parameter>
+	<parameter name="query5" class="java.lang.String">
+	</parameter>
+	<field name="branch" class="java.lang.String">
+		<fieldDescription><![CDATA[branch]]></fieldDescription>
+	</field>
+	<field name="count" class="java.lang.String">
+		<fieldDescription><![CDATA[count]]></fieldDescription>
+	</field>
+	<title>
+		<band height="134">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="556" height="22"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Raspodela primeraka po ograncima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="39" width="40" height="16"/>
+				<textElement/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="36" y="39" width="82" height="16"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="57" width="37" height="16"/>
+				<textElement/>
+				<text><![CDATA[Upit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="36" y="57" width="519" height="16"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{query1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="36" y="69" width="519" height="16"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{query2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="36" y="81" width="519" height="16"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{query3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="36" y="93" width="519" height="16"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{query4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="36" y="105" width="519" height="16"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{query5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16">
+			<staticText>
+				<reportElement positionType="Float" x="6" y="0" width="79" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ogranak]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="96" y="0" width="79" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[broj primeraka]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="184" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="91" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="183" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="15" width="184" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="17">
+			<textField>
+				<reportElement positionType="Float" x="6" y="0" width="79" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{branch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="96" y="0" width="79" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{count}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="91" y="0" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="183" y="0" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="16" width="184" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="groups" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="525" leftMargin="50" rightMargin="20" topMargin="43" bottomMargin="43">
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisis"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Pixels"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="Arial10" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="ogranak" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nazivogr" class="java.lang.String">
+	</parameter>
+	<queryString><![CDATA[select g.user_id, g.inst_name, g.cont_fname, g.cont_lname, u.sign_date, u.phone
+from users u, groups g
+where u.id = g.user_id and u.branch_id=$P{ogranak}]]></queryString>
+	<field name="CONT_FNAME" class="java.lang.String">
+	</field>
+	<field name="CONT_LNAME" class="java.lang.String">
+	</field>
+	<field name="INST_NAME" class="java.lang.String">
+	</field>
+	<field name="PHONE" class="java.lang.String">
+	</field>
+	<field name="SIGN_DATE" class="java.sql.Timestamp">
+	</field>
+	<field name="USER_ID" class="java.lang.String">
+	</field>
+	<title>
+		<band height="70">
+			<staticText>
+				<reportElement positionType="Float" x="69" y="1" width="383" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kolektivni članovi]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="103" y="32" width="305" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nazivogr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement positionType="Float" x="0" y="29" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="25" y="12" width="86" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Broj člana]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="124" y="12" width="91" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Naziv institucije]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="2" width="26" height="25"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Red.
+br.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="264" y="12" width="104" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Kontakt osoba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="450" y="12" width="69" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Datum upisa]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="27" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="379" y="12" width="68" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Telefon]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17">
+			<line>
+				<reportElement positionType="Float" x="25" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="110" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="250" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="380" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="450" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="111" y="1" width="139" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{INST_NAME}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="16" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="254" y="1" width="123" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CONT_LNAME} + " " +$F{CONT_FNAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="1" width="24" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="27" y="1" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{USER_ID}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM d, yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="452" y="1" width="68" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{SIGN_DATE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="380" y="1" width="69" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PHONE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

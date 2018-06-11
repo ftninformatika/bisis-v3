@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:Foo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="mojservis" targetNamespace="urn:Foo">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:Foo">
+      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <complexType name="SQLException">
+        <sequence>
+          <element name="SQLState" type="string" nillable="true"/>
+          <element name="errorCode" type="int" nillable="true"/></sequence></complexType></schema></types>
+  <message name="HelloIF_mojservis">
+    <part name="String_1" type="xsd:string"/>
+    <part name="String_2" type="xsd:string"/>
+    <part name="String_3" type="xsd:string"/>
+    <part name="String_4" type="xsd:string"/>
+    <part name="String_5" type="xsd:string"/>
+    <part name="String_6" type="xsd:string"/>
+    <part name="String_7" type="xsd:string"/>
+    <part name="String_8" type="xsd:string"/>
+    <part name="String_9" type="xsd:string"/></message>
+  <message name="HelloIF_mojservisResponse">
+    <part name="result" type="xsd:string"/></message>
+  <message name="SQLException">
+    <part name="SQLException" type="tns:SQLException"/></message>
+  <portType name="HelloIF">
+    <operation name="mojservis" parameterOrder="String_1 String_2 String_3 String_4 String_5 String_6 String_7 String_8 String_9">
+      <input message="tns:HelloIF_mojservis"/>
+      <output message="tns:HelloIF_mojservisResponse"/>
+      <fault name="SQLException" message="tns:SQLException"/></operation></portType>
+  <binding name="HelloIFBinding" type="tns:HelloIF">
+    <operation name="mojservis">
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="urn:Foo"/></input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="urn:Foo"/></output>
+      <fault name="SQLException">
+        <soap:fault name="SQLException" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="urn:Foo"/></fault>
+      <soap:operation soapAction=""/></operation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/></binding>
+  <service name="Mojservis">
+    <port name="HelloIFPort" binding="tns:HelloIFBinding">
+      <soap:address xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" location="http://160.99.21.1:8080/mojservis/mojservis"/></port></service></definitions>

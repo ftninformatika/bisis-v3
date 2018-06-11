@@ -1,0 +1,624 @@
+package com.gint.app.bisis.textsrv;
+
+import java.util.*;
+import java.sql.*;
+import java.net.*;
+import java.io.*;
+import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+import com.objectspace.jgl.*;
+import com.gint.util.file.INIFile;
+import com.gint.util.sort.Sorter;
+
+/** TextServer klasa implementira funkcije tekst servera i
+  * prilagodjena je ugradjivanju u aplet. Radi i kao TextServerPool,
+  * sto znaci da kada se pozove metoda <b>init()</b> onda kreira
+  * konfigurabilan broj TextServera i dodeljuje ih korisnicima
+  * na zahtev.<br>
+  *
+  * VAZNO: Da bi se klijent mogao spojiti na RMI server, potrebno je
+  * podesiti u <code>C:\Program Files\JavaSoft\JRE\1.3\lib\security\java.policy</code><br>
+  * <code>permission java.net.SocketPermission "RMIserver:1099-", "connect";</code><br>
+  *
+  * Isto tako, na serverskoj strani, potrebno je u istom fajlu dodati slican red:<br>
+  * <code>permission java.net.SocketPermission "DBserver:1099-", "connect";</code>
+  * da bi se RMI server mogao spojiti na bazu podataka.
+  */
+public class TextServer extends UnicastRemoteObject implements Runnable, DistributedTextServer {
+
+  public static final int CMD_NONE   = 0;
+  public static final int CMD_SELECT = 1;
+  public static final int CMD_EXPAND = 2;
+
+  /** Sadrzi kod poslednje komande. */
+  public int lastCommand;
+  /** Sadrzi tekst poslednje Select komande. */
+  public String lastSelect;
+  /** Sadrzi tekst poslednje Expand komande. */
+  public String lastExpand;
+
+  /** Konekcija na bazu podataka. */
+  public Connection conn;
+  /** Referenca na <b>DocumentManager</b>. */
+  public DocumentManager docManager;
+  public int status;
+  /** Referenca na klasu koja radi parsiranje DIALOG upita i pravi SQL. */
+  public ExpressionTree expressionTree;
+  /** HashSet pogodaka za zadati upit. */
+  public com.objectspace.jgl.HashSet searchHits;
+  /** Niz docId-ova zapisa koji zadovoljavaju zadati upit. */
+  public int[] hitArray = new int[0];
+
+
+  /**  Default konstruktor. */
+  public TextServer() throws RemoteException {
+  }
+
+  /**  Konstruktor obavlja inicijalizaciju objekta.
+    *  @param cfg Konfiguracija tekst servera
+    *  @param conn Otvorena konekcija sa bazom podataka
+    */
+  public TextServer(Connection conn) throws RemoteException {
+    this.conn = conn;
+    docManager = new OracleDocumentManager(conn);
+    expressionTree = new ExpressionTree(docManager);
+    lastSelect = "";
+    lastExpand = "";
+    lastCommand = CMD_NONE;
+    resetTimeoutCounter();
+  }
+
+  /** Dodaje novi dokument u bazu.
+    * @param document UNIMARC zapis dokumenta
+    * @return jedinstveni identifikator dokumenta
+    */
+  public int insert(String document) {
+    return docManager.insertDocument(document);
+  }
+
+  /** Smesta dokument u bazu na mesto vec postojeceg dokumenta,
+    * odredjenog svojim identifikatorom.
+    * @param doc_id Identifikator dokumenta koji se azurira
+    * @param document UNIMARC zapis dokumenta
+    * @return Status operacije: 0 - uspesno; -1 - neuspesno
+    */
+  public int update(int doc_id, String document) {
+    return docManager.updateDocument(doc_id, document);
+  }
+
+  /** Uklanja dokument iz baze. Dokument je odredjen svojim identifikatorom.
+    * @param doc_id Identifikator dokumenta
+    * @return Status operacije: 0 - uspesno; -1 - neuspesno
+    */
+  public int delete(int doc_id) {
+    int status = docManager.deleteDocument(doc_id);
+
+    // izabacuje se obrisani zapis iz tekuce liste pogodaka (ako je u njoj)
+    if (status == 0) {
+      int i = 0;
+      while (i < hitArray.length && hitArray[i] != doc_id)
+        i++;
+      if (i < hitArray.length) { // nadjen
+        int[] newHitArray = new int [hitArray.length - 1];
+        for (int j = 0; j < i; j++)
+          newHitArray[j] = hitArray[j];
+        for (int j = i+1; j < hitArray.length; j++)
+          newHitArray[j-1] = hitArray[j];
+        hitArray = newHitArray;
+        newHitArray = null;
+      }
+    }
+    return status;
+  }
+
+  /**  Vrsi azuriranje indeksa za postojeci zapis. Ne menja njegov
+    *  identifikator. Koristi se u slucajevima kada se promeni
+    *  konfiguracija tekst servera (delimiteri, mapiranje na prefikse).
+    *  @param doc_id Identifikator zapisa koji se reindeksira
+    *  @return Status izvrsene operacije: 0 - uspesno; -1 - neuspesno
+    */
+  public int reindex(int doc_id) {
+    return docManager.reindexDocument(doc_id);
+  }
+
+  /**  Pretrazuje bazu za zadati upit i vraca pogodaka koji zadovoljavaju upit.
+    *  @param query DIALOG upit
+    *  @return Broj pogodaka
+    *  @throws ExpressionException
+    */
+  public int select(String query) throws ExpressionException, RemoteException  {
+    resetTimeoutCounter();
+    int i, j, temp;
+    try {
+      expressionTree.execute(query);
+    } catch (ExpressionException e) {
+      if (searchHits == null)
+        searchHits = new com.objectspace.jgl.HashSet();
+      else
+        searchHits.clear();
+      hitArray = new int [0];
+      throw e;
+    } catch (Exception ex) {
+      searchHits.clear();
+      hitArray = new int [0];
+      ex.printStackTrace();
+      return 0;
+    }
+    searchHits = expressionTree.getRoot().getHits();
+
+    // preuzimanje rezultata (niza docID-a) iz HashSeta u niz
+    // da bi se ocuvao redosled
+    hitArray = new int [searchHits.size()];
+    Enumeration enum = searchHits.elements();
+    for (i = 0; enum.hasMoreElements(); i++)
+      hitArray[i] = ((SearchHit)enum.nextElement()).getDocID();
+    Sorter.qsort(hitArray);
+
+    lastCommand = CMD_SELECT;
+    lastSelect = query;
+    return searchHits.size();
+  }
+
+
+  /**  Izvrsava Expand funkciju.
+    *  @param prefix Prefiks po kome se ekspaduje
+    *  @param query Izraz koji se trazi. Ovom izrazu se automatski dodaje '*'
+    *  @return Vektor ExpandPair objekata, sa parovima (broj dokumenata, sadrzaj prefiksa)
+    */
+  public Vector expand(String prefix, String query) throws RemoteException {
+    resetTimeoutCounter();
+    lastExpand = prefix + ":" + query;
+    lastCommand = CMD_EXPAND;
+    return docManager.expand(prefix, query);
+  }
+
+  /**  Dohvata dokumente iz baze podataka na osnovu rezultata pretrage.
+    *  @param startIndex Redni broj prvog dokumenta u nizu
+    *  @param endIndex Redni broj poslednjeg dokumenta u nizu
+    *  @param docIDs [izlazni parametar] Identifikatori dokumenata (podrazumeva se da je niz alociran)
+    *  @param docs [izlazni parametar] Sadrzaji dokumenata, "" ako ga nema (podrazumeva se da je niz alociran)
+    *  @return false ako su losi ulazni parametri; inace true
+    */
+  public boolean getDocsRange(int startIndex, int endIndex, int[] docIDs, String[] docs) throws RemoteException {
+    resetTimeoutCounter();
+    if ((startIndex < 1) ||
+        (endIndex < 1) ||
+        (startIndex > endIndex) ||
+        (endIndex > searchHits.size()))
+      return false;
+    int k = 0;
+    for (int i = startIndex-1; i < endIndex; i++)
+      docIDs[k++] = hitArray[i];
+    docManager.getDocsRange(docIDs, docs);
+    return true;
+  }
+
+  /**  Dohvata dokumente iz baze podataka na osnovu rezultata pretrage.
+    *  @param startIndex Redni broj prvog dokumenta u nizu
+    *  @param endIndex Redni broj poslednjeg dokumenta u nizu
+    *  @return Vektor objekata koji sadrze identifikatore dokumenata i sadrzaje dokumenata, "" ako ga nema
+    */
+  public Vector getDocsRangePacked(int startIndex, int endIndex) throws RemoteException {
+    resetTimeoutCounter();
+    Vector retVal = new Vector();
+    if ((startIndex < 1) ||
+        (endIndex < 1) ||
+        (startIndex > endIndex) ||
+        (endIndex > searchHits.size()))
+      return retVal;
+
+    int[] docIDs = new int[endIndex-startIndex+1];
+    String[] docs = new String[endIndex-startIndex+1];
+
+    int k = 0;
+    for (int i = startIndex-1; i < endIndex; i++)
+      docIDs[k++] = hitArray[i];
+    docManager.getDocsRange(docIDs, docs);
+
+    for (int i = 0; i < docIDs.length; i++) {
+      retVal.addElement(new TextServerPackedDoc(docIDs[i], docs[i]));
+    }
+    return retVal;
+  }
+
+
+  /**  Dohvata zeljeni dokument iz baze
+    *  @param docID Identifikator dokumenta
+    *  @return Sadrzaj dokumenta, "" ako dokument ne postoji
+    */
+  public String getDoc(int docID) throws RemoteException {
+    resetTimeoutCounter();
+    return docManager.getDoc(docID);
+  }
+
+  /**  Vraca broj pogodaka za tekici upit.
+    *  @return Broj pogodaka tekuceg upita
+    */
+  public int getHitCount() throws RemoteException {
+    resetTimeoutCounter();
+    return hitArray.length;
+  }
+
+  /**  Vraca vektor SubqueryHit objekata koji opisuju
+    *  broj pogodaka po podupitima.
+    *  @return Vector sa pogocima po podupitima
+    */
+  public Vector getSubqueries() throws RemoteException {
+    resetTimeoutCounter();
+    return expressionTree.getSubqueries();
+  }
+
+  /**  Zauzima mesto za novi (prazan) dokument i vraca njegov
+    *  DocID. Taj dokument se posle moze update-ovati na osnovu
+    *  ovog DocID-a.
+    *  @return Identifikator novog dokumenta
+    */
+  public int reserveDocument() {
+    return docManager.reserveDocument();
+  }
+
+  public com.objectspace.jgl.HashSet getAllPrefixes() {
+    return docManager.getAllPrefixes();
+  }
+
+  public com.objectspace.jgl.HashMap getPrefixMap() {
+    return docManager.getPrefixMap();
+  }
+
+  /**  Vraca docID dokumenta na osnovu rednog broja u upitu
+    *  @param hit redni broj upita
+    *  @return int docID dokumenta
+    */
+  public int getDocID(int hit) throws RemoteException {
+    resetTimeoutCounter();
+    int ret = -1;
+    try {
+      ret = hitArray[hit-1];
+    } catch (Exception e) {
+    }
+    return ret;
+  }
+
+  /** Vraca string sa svim delimiterima iz tekuce konfiguracije baze.
+    */
+  public String getAllDelimiters() {
+    return docManager.getAllDelimiters();
+  }
+
+  /** Vraca string sa delimiterima reci iz tekuce konfiguracije baze.
+    */
+  public String getWordDelimiters() {
+    return docManager.getWordDelimiters();
+  }
+
+  /** Vraca string sa delimiterima recenica iz tekuce konfiguracije baze.
+    */
+  public String getSentenceDelimiters() {
+    return docManager.getSentenceDelimiters();
+  }
+
+  /** Prekida SELECT upit koji se izvrsava u drugom threadu.
+    */
+  public void cancelSelect() throws RemoteException {
+    resetTimeoutCounter();
+    expressionTree.cancelSelect();
+  }
+
+  /** Prekida EXPAND upit koji se izvrsava u drugom threadu.
+    */
+  public void cancelExpand() throws RemoteException {
+    resetTimeoutCounter();
+    docManager.cancelExpand();
+  }
+
+  /** Postavlja skup pogodaka na prazan skup.
+    */
+  public void clearHits() throws RemoteException {
+    resetTimeoutCounter();
+    searchHits = new com.objectspace.jgl.HashSet(); // prazan.
+    expressionTree.getRoot().setHits(searchHits);
+  }
+
+
+  /** Smesta dokument u bazu na mesto vec postojeceg dokumenta,
+    * odredjenog svojim identifikatorom, ali to radi sa novom JDBC konekcijom
+    * koja sluzi samo za to i nakon posla se zatvara.
+    * @param doc_id Identifikator dokumenta koji se azurira
+    * @param document UNIMARC zapis dokumenta
+    * @return Status operacije: 0 - uspesno; -1 - neuspesno
+    */
+  public int updateWithNewConnection(int docID, String doc) {
+    int retVal = -1;
+    try {
+      retVal = 0;
+      Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@"+Environment.getServer()+":"+Environment.getPort()+":"+Environment.getSID(), Environment.getUsername(), Environment.getPassword());
+      conn.setAutoCommit(false);
+      DocumentManager odm = new OracleDocumentManager((OracleDocumentManager)docManager, conn);
+      retVal = odm.updateDocument(docID, doc);
+      conn.close();
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    return retVal;
+  }
+
+  /** Vraca novi jedinstveni broj iz datog brojaca (sekvence) */
+  public int getNewNumber(String counterID) {
+    return docManager.getNewNumber(counterID);
+  }
+
+  /** Proverava da li vec postoji dati inventarni broj */
+  public boolean checkInvNumber(String inv, int docID) {
+    return docManager.checkInvNumber(inv, docID);
+  }
+
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  //    Deo koda koji se bavi TextServerPool-om.
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /** Atribut koji sadrzi broj proziva od strane thread-a koji ispituje neaktivne TextServere.
+    * Ako ovaj broj dostigne limit, taj TextServer se proglasava neaktivnim i odjavljuje.
+    */
+  private int timeoutCounter;
+  public int getTimeoutCounter() {
+    return timeoutCounter;
+  }
+  public void setTimeoutCounter(int t) {
+    timeoutCounter = t;
+  }
+  /** Uvecava <b>timeoutCounter</b> za jedan. */
+  public void incTimeoutCounter() {
+    timeoutCounter++;
+  }
+  /** Postavlja timeoutCounter na 0. Poziva se prilikom izvrsenja svih metoda
+    * koje se pozivaju sa klijentske strane. Time se TextServer proglasava aktivnim.
+    */
+  public void resetTimeoutCounter() {
+    timeoutCounter = 0;
+  }
+
+  /** Broj TextServera koji se unapred naprave. */
+  private static int preconnectCount;
+  /** Tekuci broj TextServera. */
+  private int connectCount;
+  /** Maksimalan broj TextServera koji ostaje otvoren u idle stanju. */
+  private static int maxIdleConn;
+  /** Maksimalan broj TextServera koji se moze napraviti. */
+  private static int maxConn;
+  /** Vremenski period izmedju uzastopnih provera TextServera koji su zauzeti. */
+  private static int timeToCheckDeadTextServers;
+  /** Broj provera TextServera nakon kojeg se TextServer proglasava neaktivnim. */
+  private static int limit;
+  /** Vektor sa zauzetim TextServerima. */
+  private Vector usedTextServers;
+  /** Vektor sa slobodnim TextServerima. */
+  private Vector freeTextServers;
+  /** Klasa JDBC drajvera. */
+  private static String jdbcDriver;
+  /** Adresa DB servera. */
+  private static String server;
+  /** Port DB servera. */
+  private static String port;
+  /** SID DB servera. */
+  private static String SID;
+  /** KOrisnicko ime na DB serveru. */
+  private static String dbUsername;
+  /** Sifra na DB serveru. */
+  private static String dbPassword;
+
+  /** Inicijalizuje TextServerPool.
+    * Konfiguracione podatke cita iz TextServerPool.properties fajla.
+    * Kreira zadati broj TextServera i smesta ih u <b>freeTextServers</b> vektor.
+    */
+  public void init() throws ClassNotFoundException, SQLException, RemoteException {
+
+    INIFile iniFile = new INIFile(getClass().getResource("/server.ini"));
+    String jdbcDriver          = iniFile.getString("database", "driver");
+    String server              = iniFile.getString("database", "server");
+    String port                = iniFile.getString("database", "port");
+    String sid                 = iniFile.getString("database", "SID");
+    String sDbUsername         = iniFile.getString("database", "username");
+    String sDbPassword         = iniFile.getString("database", "password");
+    String sPreconnectCount    = iniFile.getString("TextServer", "preconnectCount");
+    String sMaxIdleTextServers = iniFile.getString("TextServer", "maxIdleTextServers");
+    String sMaxTextServers     = iniFile.getString("TextServer", "maxTextServers");
+    String sTimeToCheckDeadTextServers = iniFile.getString("TextServer", "timeToCheckDeadTextServers");
+    String sLimit              = iniFile.getString("TextServer", "limit");
+    int preconnectCount = 0;
+    int maxIdleTextServers = 0;
+    int maxTextServers = 0;
+    int timeToCheckDeadTextServers = 300;
+    int limit = 4;
+dump("TextServerPool iniciran...");
+    try {
+      preconnectCount = Integer.parseInt(sPreconnectCount);
+      maxIdleTextServers = Integer.parseInt(sMaxIdleTextServers);
+      maxTextServers = Integer.parseInt(sMaxTextServers);
+      timeToCheckDeadTextServers = Integer.parseInt(sTimeToCheckDeadTextServers) * 1000;
+      limit = Integer.parseInt(sLimit);
+    } catch (NumberFormatException ex) {
+      dump("TextServerPool.properties: Bad number format!");
+    }
+    setup(server, port, sid, jdbcDriver, preconnectCount, maxIdleTextServers, maxTextServers, timeToCheckDeadTextServers, limit, sDbUsername, sDbPassword);
+
+    freeTextServers = new Vector();
+    usedTextServers = new Vector();
+    Class.forName(jdbcDriver);
+    for (int i = 0; i < preconnectCount; i++) {
+      Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@"+server+":"+port+":"+SID, dbUsername, dbPassword);
+      conn.setAutoCommit(false);
+      freeTextServers.addElement(new TextServer(conn));
+    }
+    connectCount = preconnectCount;
+dump("Uspesno.\nPool spreman.\n");
+  }
+
+  /** Podesava parametre TextServerPool-a. */
+  public static void setup(String server1, String port1, String SID1, String jdbcDrv,int preconnectCount1,int maxIdleConn1, int maxConn1, int timeToCheckDeadTextServers1, int limit1, String dbUsername1, String dbPassword1) {
+    server = server1;
+    port = port1;
+    SID = SID1;
+    preconnectCount = preconnectCount1;
+    maxIdleConn = maxIdleConn1;
+    maxConn = maxConn1;
+    jdbcDriver = jdbcDrv;
+    timeToCheckDeadTextServers = timeToCheckDeadTextServers1;
+    limit = limit1;
+    dbUsername = dbUsername1;
+    dbPassword = dbPassword1;
+  }
+
+  /** Uzima slobodan TextServer iz Pool-a i prosledjuje ga korisniku. To znaci da ga uzima iz
+    * <b>freeTextServers</b> vektora, premesta ga u <b>usedTextServers</b> vektor
+    * i vraca taj TextServer korisniku.
+    */
+  public DistributedTextServer checkOut() throws SQLException, RemoteException {
+    synchronized (this) {
+      Connection conn = null;
+      TextServer ts = null;
+      if (freeTextServers.size() > 0) {
+        ts   = (TextServer)freeTextServers.elementAt(0);
+        freeTextServers.removeElementAt(0);
+        usedTextServers.addElement(ts);
+      } else {
+        if (connectCount < maxConn) {
+          conn = DriverManager.getConnection("jdbc:oracle:thin:@"+server+":"+port+":"+SID, dbUsername, dbPassword);
+          conn.setAutoCommit(false);
+          ts   = new TextServer(conn);
+          usedTextServers.addElement(ts);
+          connectCount++;
+        } else {
+          try {
+            wait();
+            ts   = (TextServer)freeTextServers.elementAt(0);
+            freeTextServers.removeElementAt(0);
+            usedTextServers.addElement(ts);
+          } catch (InterruptedException ex) {
+            ex.printStackTrace();
+          }
+        }
+      }
+dump("Uzet jedan TextServer");
+      dump();
+      return ts;
+    }
+  }
+
+  /** Vraca TextServer u Pool. To znaci da ga uzima iz <b>usedTextServers</b> vektora i
+    * premesta ga u <b>freeTextServers</b> vektor. Ako ima potrebe, oslobadja onoliko
+    * TextServera, dok ne dostigne <b>maxIdleConn</b>.
+    */
+  public void checkIn(DistributedTextServer aTs) throws RemoteException {
+    synchronized (this) {
+      if (aTs ==  null)
+        return;
+      if (usedTextServers.removeElement(aTs)) {
+        aTs.clearHits();
+        freeTextServers.addElement(aTs);
+        while (freeTextServers.size() > maxIdleConn) {
+          int lastOne = freeTextServers.size() - 1;
+          Connection conn = ((TextServer)freeTextServers.elementAt(lastOne)).conn;
+          try {
+            conn.close();
+          } catch (SQLException ex) {
+          }
+          freeTextServers.removeElementAt(lastOne);
+        }
+        notify();
+      }
+  dump("Vracen jedan TextServer");
+  dump();
+    }
+  }
+
+  /** Dampuje na konzolu stanje Pool-a. */
+  private void dump() {
+    dump("( ");
+    dump("preconnectCount: " + preconnectCount);
+    dump(", connectCount: " + connectCount);
+    dump(", maxIdleConn: " + maxIdleConn);
+    dump(", maxConn: " + maxConn);
+    dump(", usedTextServers size: " + usedTextServers.size());
+    dump(", freeTextServers size: " + freeTextServers.size());
+    dump(" )\n");
+  }
+  private void dump(String s) {
+    System.out.println(s);
+  }
+
+  /** Vektor kandidata za uklanjanje. TexServer-i koji su neaktivni moraju se
+    * ukloniti iz <b>usedTextServers</b> vektora i njihove konekcije ka bazi zatvoriti.
+    */
+  private Vector toRemove = new Vector();
+
+  /** Thread metoda koja na svakih <b>timeToCheckDeadTextServers</b> sekundi proverava
+    * Pool i ako nadje TextServer koji je <b>limit</b> puta bio prozvan, proglasava ga
+    * neaktivnim i izbacuje ga iz <b>usedTextServers</b> vektora, gasi mu konekciju i
+    * pravi jedan nov TextServer koja ubacuje u <b>freeTextServers</b> vektor.
+    */
+  public void run() {
+    while(true) {
+      toRemove.clear();
+
+      // prodjemo kroz sve used Text Servere i pogasimo konekcije sa bazom za one koji su istekli, a zatim
+      // ih dodamo u vektor toRemove iz kojeg cemo redom da ih poizbacujemo. Za svaki izbaceni tekstserver
+      // napravicemo jedan nov.
+      for (int i = 0; i < usedTextServers.size(); i++) {
+        TextServer t = (TextServer)usedTextServers.elementAt(i);
+        t.incTimeoutCounter();
+        if (t.getTimeoutCounter() == limit) {
+          // ubijemo ovaj TextServer jer je istekao timeout
+          Connection conn = t.conn;
+          try {
+            conn.close();
+          } catch (SQLException ex) {
+            ex.printStackTrace();
+          }
+          t.conn = null;
+          toRemove.addElement(t);
+        }
+      }
+
+      // uklonimo sve kandidate
+      for (int i = 0; i < toRemove.size(); i++) {
+        TextServer t = (TextServer)toRemove.elementAt(i);
+        usedTextServers.removeElement(t);
+        // dodamo nov
+        try {
+          Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@"+server+":"+port+":"+SID, dbUsername, dbPassword);
+          conn.setAutoCommit(false);
+          freeTextServers.addElement(new TextServer(conn));
+dump("###### Uklanjam TextServer i dodajem nov ######");
+          dump();
+        } catch (Exception ex) {
+          ex.printStackTrace();
+        }
+      }
+      // sacekamo zadati broj sekundi pre ponevne provere
+      try { Thread.currentThread().sleep(timeToCheckDeadTextServers); } catch (Exception ex) {}
+    }
+  }
+
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  // Ovaj deo se odnosi na EJB!
+  // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  public void remove () throws java.rmi.RemoteException {
+  }
+
+  public boolean isIdentical(javax.ejb.EJBObject obj) throws java.rmi.RemoteException {
+    return false;
+  }
+
+  public javax.ejb.Handle getHandle() throws java.rmi.RemoteException {
+    return null;
+  }
+
+  public java.lang.Object getPrimaryKey() throws java.rmi.RemoteException {
+    return null;
+  }
+
+  public javax.ejb.EJBHome getEJBHome() throws java.rmi.RemoteException {
+    return null;
+  }
+
+}

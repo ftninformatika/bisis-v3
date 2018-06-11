@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="posetiocik" language="java" pageWidth="482" pageHeight="283" whenNoDataType="AllSectionsNoDetail" columnWidth="482" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisiski"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Centimeters"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="arial" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="begdate" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[java.sql.Timestamp.valueOf("2005-01-01 00:00:00.000000")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="enddate" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[java.sql.Timestamp.valueOf("2005-01-10 00:00:00.000000")]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[select distinct lend_date, single_id , uc.name, uc.id 
+from lending l, single s, user_categs uc where
+l.lend_date >= $P{begdate}
+and l.lend_date <= $P{enddate}
+and (l.return_date is null or l.return_date > l.lend_date)
+and l.single_id = s.user_id and s.user_ctgr = uc.id
+union
+select distinct resume_date, single_id , uc.name, uc.id 
+from lending l, single s, user_categs uc where
+l.resume_date >= $P{begdate}
+and l.resume_date <= $P{enddate}
+and (l.return_date is null or l.return_date > l.resume_date)
+and l.single_id = s.user_id and s.user_ctgr = uc.id
+order by 4]]></queryString>
+	<field name="LEND_DATE" class="java.sql.Timestamp">
+	</field>
+	<field name="NAME" class="java.lang.String">
+	</field>
+	<field name="SINGLE_ID" class="java.lang.String">
+	</field>
+	<variable name="sum" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{SINGLE_ID}]]></variableExpression>
+		<initialValueExpression><![CDATA[new java.lang.Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="grup" class="java.lang.Integer" resetType="Group" resetGroup="ctgr" calculation="Count">
+		<variableExpression><![CDATA[$F{SINGLE_ID}]]></variableExpression>
+		<initialValueExpression><![CDATA[new java.lang.Integer(0)]]></initialValueExpression>
+	</variable>
+	<group name="ctgr">
+		<groupExpression><![CDATA[$F{NAME}]]></groupExpression>
+		<groupFooter>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" x="220" y="1" width="6" height="18"/>
+				<textElement/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="36" y="1" width="182" height="17"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="228" y="1" width="156" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{grup}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<columnHeader>
+		<band height="42">
+			<staticText>
+				<reportElement positionType="Float" x="57" y="7" width="311" height="16"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Struktura posetilaca po kategoriji korisnka:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="210" y="26" width="80" height="15"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[aktivni:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="27">
+			<staticText>
+				<reportElement positionType="Float" x="108" y="6" width="110" height="15"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[UKUPNO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="228" y="6" width="80" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="220" y="6" width="6" height="18"/>
+				<textElement/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="kartica" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="510" leftMargin="43" rightMargin="40" topMargin="43" bottomMargin="43">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisisns2"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Millimeters"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="arial" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="begdate" class="java.sql.Timestamp">
+	</parameter>
+	<parameter name="enddate" class="java.sql.Timestamp">
+	</parameter>
+	<parameter name="ctlg" class="java.lang.String">
+		<defaultValueExpression><![CDATA["000018528"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subreport" class="net.sf.jasperreports.engine.JasperReport">
+	</parameter>
+	<parameter name="doc" class="org.w3c.dom.Document">
+	</parameter>
+	<queryString><![CDATA[select single_id, lend_date, return_date
+from lending
+where ctlg_no = $P{ctlg} and lend_date >=$P{begdate} 
+and lend_date <= $P{enddate}]]></queryString>
+	<field name="LEND_DATE" class="java.sql.Timestamp">
+	</field>
+	<field name="RETURN_DATE" class="java.sql.Timestamp">
+	</field>
+	<field name="SINGLE_ID" class="java.lang.String">
+	</field>
+	<variable name="redbr" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
+	</variable>
+	<variable name="return" class="java.lang.String">
+		<variableExpression><![CDATA[$F{RETURN_DATE} != null ? com.gint.app.bisis.circ.DBConnection.fromDatabaseDate($F{RETURN_DATE}.toString()) : ""]]></variableExpression>
+	</variable>
+	<title>
+		<band height="71">
+			<staticText>
+				<reportElement positionType="Float" x="167" y="7" width="181" height="17"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kartica knjige]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="168" y="31" width="50" height="14"/>
+				<textElement/>
+				<text><![CDATA[period:  od]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="218" y="31" width="58" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[com.gint.app.bisis.circ.DBConnection.fromDatabaseDate($P{begdate}.toString())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="276" y="31" width="15" height="14"/>
+				<textElement/>
+				<text><![CDATA[do]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="291" y="31" width="58" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[com.gint.app.bisis.circ.DBConnection.fromDatabaseDate($P{enddate}.toString())]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="3" y="49" width="507" height="20"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRXmlDataSource($P{doc}, "/Bisis/Zapis")]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{subreport}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="43">
+			<line>
+				<reportElement positionType="Float" x="0" y="42" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="40" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="15" y="22" width="53" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Red. br]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="81" y="22" width="123" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Datum izdavanja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="210" y="22" width="142" height="13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Broj članske karte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="357" y="22" width="115" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Datum vraćanja]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="78" y="21" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="205" y="20" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="354" y="20" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<line>
+				<reportElement positionType="Float" x="0" y="22" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="78" y="2" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="205" y="2" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="354" y="2" width="1" height="17"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="82" y="4" width="122" height="17"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[com.gint.app.bisis.circ.DBConnection.fromDatabaseDate($F{LEND_DATE}.toString())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="207" y="4" width="145" height="18"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{SINGLE_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="16" y="3" width="52" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{redbr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="358" y="2" width="115" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{return}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="StanjePoNaslovima" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridWidth" value="5"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="5"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<parameter name="today" class="java.lang.String">
+	</parameter>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[@name]]></fieldDescription>
+	</field>
+	<field name="count" class="java.lang.String">
+		<fieldDescription><![CDATA[titleCount]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[@isTotal]]></fieldDescription>
+	</field>
+	<title>
+		<band height="51">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="15" width="556" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stanje fonda po naslovima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="440" y="35" width="44" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Na dan:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="485" y="35" width="70" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{today}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="196" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Narodna biblioteka „Jovan Popović“ Kikinda]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="11">
+			<staticText>
+				<reportElement positionType="Float" x="5" y="0" width="456" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Odeljenje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="465" y="0" width="86" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Broj naslova]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="556" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="10" width="556" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="11">
+			<rectangle>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="0" width="556" height="11" forecolor="#c0c0c0" backcolor="#c0c0c0">
+					<printWhenExpression><![CDATA[$F{total}]]></printWhenExpression>
+				</reportElement>
+				<graphicElement pen="None"/>
+			</rectangle>
+			<textField>
+				<reportElement positionType="Float" x="4" y="0" width="457" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="465" y="0" width="86" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

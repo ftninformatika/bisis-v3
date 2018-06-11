@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="kartica_sub" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="9" rightMargin="20" topMargin="14" bottomMargin="14">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Millimeters"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="Arial" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<field name="Ctlg" class="java.lang.String">
+		<fieldDescription><![CDATA[Ctlg]]></fieldDescription>
+	</field>
+	<field name="Naslov" class="java.lang.String">
+		<fieldDescription><![CDATA[Naslov]]></fieldDescription>
+	</field>
+	<field name="Autor" class="java.lang.String">
+		<fieldDescription><![CDATA[Autor]]></fieldDescription>
+	</field>
+	<field name="Izdavac" class="java.lang.String">
+		<fieldDescription><![CDATA[Izdavac]]></fieldDescription>
+	</field>
+	<field name="Mesto" class="java.lang.String">
+		<fieldDescription><![CDATA[Mesto]]></fieldDescription>
+	</field>
+	<field name="Godina" class="java.lang.String">
+		<fieldDescription><![CDATA[Godina]]></fieldDescription>
+	</field>
+	<field name="Signatura" class="java.lang.String">
+		<fieldDescription><![CDATA[Signatura]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="100">
+			<staticText>
+				<reportElement positionType="Float" x="1" y="6" width="42" height="14"/>
+				<textElement/>
+				<text><![CDATA[Autor:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="43" y="6" width="254" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Autor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="24" width="44" height="14"/>
+				<textElement/>
+				<text><![CDATA[Naslov:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="48" y="24" width="250" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Naslov}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="51" width="48" height="13"/>
+				<textElement/>
+				<text><![CDATA[Izdavač:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="49" y="51" width="248" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Izdavac}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="67" width="94" height="13"/>
+				<textElement/>
+				<text><![CDATA[Mesto izdavanja:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="94" y="67" width="204" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Mesto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="82" width="98" height="14"/>
+				<textElement/>
+				<text><![CDATA[Godina izdavanja:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="101" y="82" width="93" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Godina}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="340" y="6" width="81" height="16"/>
+				<textElement/>
+				<text><![CDATA[Inventarni broj:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="421" y="6" width="118" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Ctlg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="341" y="24" width="61" height="16"/>
+				<textElement/>
+				<text><![CDATA[Signatura:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="402" y="24" width="117" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Signatura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

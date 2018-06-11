@@ -1,0 +1,2 @@
+Main-Class: com.gint.app.bisis.circ.CircApplet
+Class-Path: textsrv.jar report.jar lib/freemarker.jar lib/jgl3.1.1.jar lib/layout.jar lib/classes12.jar lib/sapdbc.jar lib/xmlParserAPIs.jar lib/xercesImpl.jar lib/xalan.jar lib/ejb.jar lib/gint-utils.jar lib/commons-beanutils-1.5.jar lib/commons-collections-2.1.jar lib/commons-digester-1.3.jar lib/jasperreports-0.6.8.jar lib/commons-logging.jar lib/itext-1.2.jar lib/ilf-gpl.jar lib/warning.jar lib/xbean.jar lib/jsr173_api.jar

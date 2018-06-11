@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE UFieldSet [
+  <!ELEMENT UFieldSet (UField*, UExtCodeTypes*, UExternalCodes*)>
+  <!ELEMENT UField (first?, second?, USubfield+)>
+  <!ATTLIST UField
+      name        CDATA        #REQUIRED
+      desc        CDATA        #REQUIRED
+      mandatory   (true|false) #REQUIRED
+      repeatable  (true|false) #REQUIRED
+      secondarity (true|false) #REQUIRED>
+      
+  <!ELEMENT first (value*)>
+  <!ATTLIST first
+      desc    CDATA            #IMPLIED
+      default CDATA            #IMPLIED>
+      
+  <!ELEMENT second (value*)>
+  <!ATTLIST second
+      desc    CDATA            #IMPLIED
+      default CDATA            #IMPLIED>
+  
+  <!ELEMENT value EMPTY>
+  <!ATTLIST value
+      number CDATA     #REQUIRED
+      desc   CDATA     #REQUIRED>
+  
+  <!ELEMENT USubfield (UControlType, UInternalCodes*, USubSubfield*)>
+  <!ATTLIST USubfield
+      name       CDATA             #REQUIRED
+      desc       CDATA             #REQUIRED
+      length     CDATA             #REQUIRED
+      mandatory  (true|false)      #REQUIRED
+      repeatable (true|false)      #REQUIRED
+      status     CDATA             #REQUIRED
+      controlID  CDATA             #REQUIRED
+      default    CDATA             #REQUIRED
+      typeOfExternalCodeBook CDATA #REQUIRED>
+  
+  <!ELEMENT UControlType EMPTY>
+  <!ATTLIST UControlType
+      name   CDATA            #REQUIRED
+      desc   CDATA            #REQUIRED>
+      
+  <!ELEMENT UInternalCodes EMPTY>
+  <!ATTLIST UInternalCodes
+      name   CDATA            #IMPLIED
+      desc   CDATA            #IMPLIED>
+  
+  <!ELEMENT USubSubfield (UControlType, USubfieldCodes*)>
+  <!ATTLIST USubSubfield
+      name       CDATA             #REQUIRED
+      desc       CDATA             #REQUIRED
+      length     CDATA             #REQUIRED
+      mandatory  (true|false)      #REQUIRED
+      repeatable (true|false)      #REQUIRED
+      status     CDATA             #REQUIRED
+      controlID  CDATA             #REQUIRED
+      default    CDATA             #REQUIRED>
+  
+  <!ELEMENT USubfieldCodes EMPTY>
+  <!ATTLIST USubfieldCodes
+      name   CDATA            #IMPLIED
+      desc   CDATA            #IMPLIED>
+  
+  <!ELEMENT UExtCodeTypes (UExternalCodes+)>
+  <!ATTLIST UExtCodeTypes
+      name   CDATA        #REQUIRED
+      desc   CDATA        #REQUIRED>
+  
+  <!ELEMENT UExternalCodes EMPTY>
+  <!ATTLIST UExternalCodes 
+      name   CDATA        #REQUIRED
+      desc   CDATA        #REQUIRED
+      type   CDATA        #REQUIRED>
+]>    
+
+
+<UFieldSet>
+  <UField desc="Slobodno oblikovane predmetne odrednice" mandatory="false" name="610" repeatable="true" secondarity="false">
+    <first default="*null*" desc="Nivo predmetne odrednice">
+      <value desc="Nivo nije odredjen" number="0"></value>
+      <value desc="Primarni izraz" number="1"></value>
+      <value desc="Sekundarni izraz" number="2"></value>
+    </first>
+    
+    <USubfield controlID="0" default="*null*" desc="Predmetna odrednica" length="0" mandatory="false" name="a" repeatable="true" status="p" typeOfExternalCodeBook="0">
+      <UControlType desc="Nema kontrole" name="0"></UControlType>
+    </USubfield>
+    
+    <USubfield controlID="1" default="*null*" desc="Jezik predmetne odrednice" length="3" mandatory="false" name="z" repeatable="true" status="p" typeOfExternalCodeBook="1">
+      <UControlType desc="Kontrola preko eksternog sifarnika" name="1"></UControlType>
+    </USubfield>
+  </UField>
+
+  <UField desc="Opsti podaci za obradu" mandatory="true" name="100" repeatable="false" secondarity="false">
+    <USubfield controlID="2" default="*null*" desc="Oznaka godine izdavanja" length="1" mandatory="false" name="b" repeatable="false" status="a" typeOfExternalCodeBook="0">
+      <UControlType desc="Kontrola preko internog sifarnika" name="2"></UControlType>
+      <UInternalCodes desc="tekuca periodicna publikacija" name="a"></UInternalCodes>
+      <UInternalCodes desc="periodicna publikacija (izlazenje zavrseno)" name="b"></UInternalCodes>
+      <UInternalCodes desc="periodicna publikacija nepoznatog statusa" name="c"></UInternalCodes>
+      <UInternalCodes desc="monografska publikacija, zakljucena" name="d"></UInternalCodes>
+      <UInternalCodes desc="pretisak dokumenta" name="e"></UInternalCodes>
+      <UInternalCodes desc="godina izdavanja omedjene publikacija nesigurna" name="f"></UInternalCodes>
+      <UInternalCodes desc="omedjena publikacija cije se izlazenje nastavlja" name="g"></UInternalCodes>
+      <UInternalCodes desc="omedjena publikacija sa stvarnom godinom izdavanja" name="h"></UInternalCodes>
+      <UInternalCodes desc="omedjena publikacija s godinom pustanja u promet" name="i"></UInternalCodes>
+      <UInternalCodes desc="omedjena publikacija s detaljnim datumom izdavanja" name="j"></UInternalCodes>
+    </USubfield>
+    
+    <USubfield controlID="3" default="*null*" desc="Godina izdavanja 1" length="4" mandatory="true" name="c" repeatable="false" status="a" typeOfExternalCodeBook="0">
+      <UControlType desc="Kontrola na godine duz 4 znaka" name="3"></UControlType>
+    </USubfield>
+
+    <USubfield controlID="1" default="*null*" desc="Abeceda/pismo stvarnog naslova" length="2" mandatory="false" name="l" repeatable="false" status="a" typeOfExternalCodeBook="12">
+      <UControlType desc="Kontrola preko eksternog sifarnika" name="1"></UControlType>
+    </USubfield>
+  </UField>
+
+  <UField desc="Podaci o stanju fonda pojedinacne fizicke jedinice" mandatory="false" name="996" repeatable="true" secondarity="false">
+    <first default="0"  desc="Stanje potpolja 996p,q">
+      <value desc="Bez ogranicenja (nema 996p,q)" number="0"></value>
+      <value desc="Ima 996p" number="1"></value>
+      <value desc="Ima 996q" number="2"></value>
+      <value desc="Ima 996p,q" number="3"></value>
+    </first>
+    <second default="*null*"  desc="Indikator o smestaju pojedinacne fizcke jedinice">
+      <value desc="Publikacija se nalazi u magacinu" number="1"></value>
+      <value desc="Publikacija se nalazi u slobodnom pristupu" number="2"></value>
+    </second>
+
+    <USubfield controlID="0" default="*null*" desc="Broj i datum racuna" length="38" mandatory="false" name="1" repeatable="false" status="a" typeOfExternalCodeBook="0">
+      <UControlType desc="Nema kontrole" name="0"></UControlType>
+      <USubSubfield controlID="9" default="*null*" desc="Datum racuna" length="8" mandatory="false" name="g" repeatable="false" status="a">
+        <UControlType desc="Kontrola na datum, duz 8 oblika GGGGMMDD" name="9"></UControlType>
+      </USubSubfield>
+      <USubSubfield controlID="0" default="*null*" desc="Broj racuna" length="30" mandatory="false" name="m" repeatable="false" status="a">
+        <UControlType desc="Nema kontrole" name="0"></UControlType>
+      </USubSubfield>
+      <USubSubfield controlID="9" default="*null*" desc="datum racuna" length="8" mandatory="false" name="q" repeatable="false" status="a">
+        <UControlType desc="Kontrola na datum, duz 8 oblika GGGGMMDD" name="9"></UControlType>
+      </USubSubfield>
+    </USubfield>
+    
+    <USubfield controlID="0" default="*null*" desc="Signatura" length="79" mandatory="false" name="d" repeatable="false" status="a" typeOfExternalCodeBook="0">
+      <UControlType desc="Nema kontrole" name="0"></UControlType>
+      <USubSubfield controlID="2" default="*null*" desc="Interna oznaka" length="10" mandatory="false" name="i" repeatable="false" status="a">
+        <UControlType desc="Kontrola preko internog sifarnika" name="2"></UControlType>
+        <USubfieldCodes desc="arheografsko odeljenje 1 (br. 20)" name="A1"></USubfieldCodes>
+        <USubfieldCodes desc="arheografsko odeljenje 2 (br. 23)" name="A2"></USubfieldCodes>
+        <USubfieldCodes desc="arheografsko odeljenje 3 (br. 17)" name="A3"></USubfieldCodes>
+        <USubfieldCodes desc="arheografsko odeljenje 4 (potkrovlje)" name="A4"></USubfieldCodes>
+        <USubfieldCodes desc="AGRIS" name="AG"></USubfieldCodes>
+        <USubfieldCodes desc="Separati - fizika" name="Fs"></USubfieldCodes>
+      </USubSubfield>
+    </USubfield>
+  </UField>
+
+  <UField desc="Prilozi" mandatory="false" name="421" repeatable="true" secondarity="false">
+    <second default="*null*"  desc="Indikator o ispisu polja na kataloskim jedinicama">
+      <value desc="Napomena se na stampa" number="0"></value>
+      <value desc="Napomena se stampa" number="1"></value>
+    </second>
+    
+    <USubfield controlID="6" default="*null*" desc="Broj taga" length="5" mandatory="false" name="1" repeatable="true" status="a" typeOfExternalCodeBook="0">
+      <UControlType desc="Kontrola $1 broj taga, duz5" name="6"></UControlType>
+    </USubfield>
+    
+    <USubfield controlID="1" default="*null*" desc="Sekundarno podpolje (kod vrste autorstva)" length="3" mandatory="false" name="4" repeatable="true" status="a" typeOfExternalCodeBook="3">
+      <UControlType desc="Kontrola preko eksternog sifarnika" name="1"></UControlType>
+    </USubfield>
+  </UField>
+
+  <UExtCodeTypes desc="Skup znakova" name="11">
+    <UExternalCodes desc="ISO 6438 (africki kodirani skup znakova)" name="06" type="11"></UExternalCodes>
+    <UExternalCodes desc="ISO 5428 (grcki skup znakova)" name="05" type="11"></UExternalCodes>
+  </UExtCodeTypes>  
+  <UExtCodeTypes desc="Abeceda/pismo" name="12">
+    <UExternalCodes desc="korejsko" name="ka" type="12"></UExternalCodes>
+    <UExternalCodes desc="Latinica" name="ba" type="12"></UExternalCodes>
+    <UExternalCodes desc="cirilica, pismo nije soecificirano" name="ca" type="12"></UExternalCodes>
+    <UExternalCodes desc="Japansko pismo - kanae" name="dc" type="12"></UExternalCodes>
+  </UExtCodeTypes>    
+  <UExtCodeTypes desc="Sifre fakulteta" name="13">
+    <UExternalCodes desc="Prirodno-matematicki fakultet, Novi Sad" name="2110" type="13"></UExternalCodes>
+  </UExtCodeTypes>    
+</UFieldSet>

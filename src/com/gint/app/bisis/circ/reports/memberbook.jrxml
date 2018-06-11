@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="memberbook" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="525" leftMargin="50" rightMargin="20" topMargin="43" bottomMargin="43">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisisbg2"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Pixels"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="Arial10" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="datum" class="java.sql.Timestamp">
+	</parameter>
+	<parameter name="ogranak" class="java.lang.Integer">
+	</parameter>
+	<parameter name="nazivogr" class="java.lang.String">
+	</parameter>
+	<parameter name="subreport" class="net.sf.jasperreports.engine.JasperReport">
+	</parameter>
+	<queryString><![CDATA[select u.id, u.city, u.zipcode, u.address, u.branch_id, s.first_name, 
+s.last_name, s.doc_no,s.doc_city, s.jmbg, sg.sdate, sg.cost 
+from users u, single s, signing sg 
+where u.id = s.user_id and u.id = sg.single_id 
+and sg.sdate = $P{datum} and u.branch_id = $P{ogranak}
+order by s.last_name]]></queryString>
+	<field name="ADDRESS" class="java.lang.String">
+	</field>
+	<field name="BRANCH_ID" class="java.math.BigDecimal">
+	</field>
+	<field name="CITY" class="java.lang.String">
+	</field>
+	<field name="COST" class="java.math.BigDecimal">
+	</field>
+	<field name="DOC_CITY" class="java.lang.String">
+	</field>
+	<field name="DOC_NO" class="java.lang.String">
+	</field>
+	<field name="FIRST_NAME" class="java.lang.String">
+	</field>
+	<field name="ID" class="java.lang.String">
+	</field>
+	<field name="JMBG" class="java.lang.String">
+	</field>
+	<field name="LAST_NAME" class="java.lang.String">
+	</field>
+	<field name="SDATE" class="java.sql.Timestamp">
+	</field>
+	<field name="ZIPCODE" class="java.math.BigDecimal">
+	</field>
+	<group name="dummy">
+		<groupFooter>
+		<band height="47">
+			<subreport>
+				<reportElement positionType="Float" x="1" y="23" width="526" height="20"/>
+				<subreportParameter name="datum">
+					<subreportParameterExpression><![CDATA[$P{datum}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ogranak">
+					<subreportParameterExpression><![CDATA[$P{ogranak}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{subreport}]]></subreportExpression>
+			</subreport>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="70">
+			<staticText>
+				<reportElement positionType="Float" x="69" y="1" width="383" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dnevni izveštaj upisanih članova sa bilansom]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="103" y="32" width="305" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nazivogr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<textField>
+				<reportElement positionType="Float" x="491" y="1" width="28" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="458" y="1" width="33" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[List br.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="19" y="1" width="36" height="15"/>
+				<textElement/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="56" y="1" width="63" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[com.gint.app.bisis.circ.DBConnection.fromDatabaseDate($P{datum}.toString())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement positionType="Float" x="0" y="29" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="25" y="9" width="80" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Broj člana]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="96" y="9" width="91" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Ime i prezime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="2" width="26" height="25"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Red.
+br.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="211" y="9" width="66" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Adresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="326" y="9" width="104" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Lična karta i JMBG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="467" y="9" width="52" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="27" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28">
+			<line>
+				<reportElement positionType="Float" x="25" y="0" width="1" height="27"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="102" y="0" width="1" height="27"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="180" y="0" width="1" height="27"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="330" y="0" width="1" height="27"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="460" y="0" width="1" height="27"/>
+				<graphicElement/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="27" y="6" width="74" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="1" width="73" height="17"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="15" width="73" height="13"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="183" y="1" width="148" height="15"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="183" y="15" width="41" height="13"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{ZIPCODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="217" y="15" width="114" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CITY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00#" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="464" y="6" width="59" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{COST}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="27" width="525" height="1"/>
+				<graphicElement/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="333" y="1" width="55" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DOC_NO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="388" y="1" width="73" height="15"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DOC_CITY}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="333" y="15" width="128" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{JMBG}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="6" width="24" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

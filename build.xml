@@ -1,0 +1,206 @@
+<project name="bisis" default="build">
+  <property name="bin" value="bin"/>
+  <property name="src" value="src"/>
+  <property name="jars" value="jars"/>
+  <property name="lib" value="${jars}/lib"/>
+  <property name="build.rmic" value="sun"/>
+  
+  <path id="libs">
+    <pathelement location="${bin}"/>
+    <fileset dir="${lib}" includes="*.jar"/>
+  </path>
+
+	<target name="compile">
+    <mkdir dir="${bin}"/>
+    <javac srcdir="${src}" destdir="${bin}" classpathref="libs" target="1.4" source="1.4" debug="true"/>
+    <rmic classname="com.gint.app.bisis.sharedsrv.RMITextServer" base="${bin}" classpathref="libs"/>
+    <rmic classname="com.gint.app.bisis.sharedsrv.RMITextServerPool" base="${bin}" classpathref="libs"/>
+  </target>
+	
+	<target name="jasper">
+    <taskdef classpathref="libs" classname="net.sf.jasperreports.ant.JRAntCompileTask" name="jrc"/>
+    <jrc>
+      <src>
+        <fileset dir="${src}" includes="**/*.jrxml"/>
+      </src>
+      <classpath refid="libs"/>
+    </jrc>
+	</target>
+
+	<target name="copy.files">
+    <copy todir="${bin}">
+      <fileset dir="${src}">
+        <include name="**/*.ini"/>
+        <include name="**/*.properties"/>
+        <include name="**/*.gif"/>
+      	<include name="**/*.png"/>
+        <include name="**/*.jpg"/>
+        <include name="**/*.sql"/>
+        <include name="**/*.jasper"/>
+        <include name="**/*.jrxml"/>
+        <include name="**/*.ftl"/>
+      </fileset>
+    </copy>
+	</target>
+	
+  <target name="build.jars">
+    <mkdir dir="${jars}"/>
+    <jar jarfile="${jars}/textsrv.jar">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/textsrv/*.class"/>
+        <include name="com/gint/app/bisis/textsrv/*.ini"/>
+        <include name="com/gint/app/bisis/textsrv/*.properties"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/report.jar">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/report/**"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/editor.jar" manifest="editor-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/sharedsrv/RMI*.class"/>
+        <include name="com/gint/app/bisis/editor/**"/>
+        <include name="com/gint/app/bisis/xmlmessaging/**"/>
+        <include name="com/gint/app/bisis/xmlmessaging/**"/>
+        <include name="com/gint/app/bisis4/**"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/backup.jar" manifest="backup-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/backup/**/*.class"/>
+        <include name="com/gint/app/bisis/backup/**/*.ini"/>
+        <include name="com/gint/app/bisis/backup/**/*.properties"/>
+        <include name="com/gint/app/bisis/backup/**/*.gif"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/circ.jar" manifest="circ-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/circ/**/*.class"/>
+        <include name="com/gint/app/bisis/circ/**/*.ini"/>
+        <include name="com/gint/app/bisis/circ/**/*.properties"/>
+        <include name="com/gint/app/bisis/circ/**/*.gif"/>
+        <include name="com/gint/app/bisis/circ/**/*.jasper"/>
+        <include name="com/gint/app/bisis/circ/**/*.jrxml"/>
+        <include name="com/gint/app/bisis4/**/*"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/dbassist.jar" manifest="dbassist-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/dbassist/**/*.class"/>
+        <include name="com/gint/app/bisis/dbassist/**/*.ini"/>
+        <include name="com/gint/app/bisis/dbassist/**/*.properties"/>
+        <include name="com/gint/app/bisis/dbassist/**/*.gif"/>
+        <include name="com/gint/app/bisis/dbassist/**/*.sql"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/export.jar" manifest="export-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/export/**/*.class"/>
+        <include name="com/gint/app/bisis/export/**/*.ini"/>
+        <include name="com/gint/app/bisis/export/**/*.properties"/>
+        <include name="com/gint/app/bisis/export/**/*.gif"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/okruzenje.jar" manifest="okruzenje-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/okruzenje/**/*.class"/>
+        <include name="com/gint/app/bisis/okruzenje/**/*.ini"/>
+        <include name="com/gint/app/bisis/okruzenje/**/*.properties"/>
+        <include name="com/gint/app/bisis/okruzenje/**/*.gif"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/sharedsrv.jar" manifest="sharedsrv-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/sharedsrv/**/*.class"/>
+        <include name="com/gint/app/bisis/sharedsrv/**/*.ini"/>
+        <include name="com/gint/app/bisis/sharedsrv/**/*.properties"/>
+        <include name="com/gint/app/bisis/sharedsrv/**/*.gif"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/unimarc.jar" manifest="unimarc-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/unimarc/**/*.class"/>
+        <include name="com/gint/app/bisis/unimarc/**/*.ini"/>
+        <include name="com/gint/app/bisis/unimarc/**/*.properties"/>
+        <include name="com/gint/app/bisis/unimarc/**/*.gif"/>
+      </fileset>
+    </jar>
+    <jar jarfile="${jars}/counters.jar" manifest="counters-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/counters/**/*.class"/>
+        <include name="com/gint/app/bisis/counters/**/*.ini"/>
+        <include name="com/gint/app/bisis/counters/**/*.properties"/>
+        <include name="com/gint/app/bisis/counters/**/*.gif"/>
+      </fileset>
+    </jar>
+
+    <mkdir dir="temp"/>
+    <!--    
+    <unjar src="${lib}/jgl3.1.1.jar" dest="temp"/>
+    <unjar src="${lib}/sapdbc.jar" dest="temp"/>
+    <unjar src="${lib}/gint-utils.jar" dest="temp"/>
+    <unjar src="${lib}/commons-lang-2.0.jar" dest="temp"/>
+    <jar jarfile="${jars}/indexer.jar" manifest="indexer-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/indexer/**"/>
+        <include name="com/gint/app/bisis/textsrv/**"/>
+        <include name="com/gint/app/bisis/export/**"/>
+      </fileset>
+      <fileset dir="temp" includes="**"/>
+    </jar>
+
+    <jar jarfile="${jars}/GetRecord.jar" manifest="getrecord-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/textsrv/**"/>
+        <include name="com/gint/app/bisis/utils/**"/>
+        <include name="com/gint/app/bisis4/**"/>
+      </fileset>
+      <fileset dir="temp" includes="**"/>
+    </jar>
+
+    <jar jarfile="${jars}/PutRecord.jar" manifest="putrecord-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/textsrv/**"/>
+        <include name="com/gint/app/bisis/utils/**"/>
+        <include name="com/gint/app/bisis4/**"/>
+      </fileset>
+      <fileset dir="temp" includes="**"/>
+    </jar>
+
+    <jar jarfile="${jars}/ExportRecords.jar" manifest="exportrecords-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/utils/**"/>
+        <include name="com/gint/app/bisis4/**"/>
+      </fileset>
+      <fileset dir="temp" includes="**"/>
+    </jar>
+
+    <jar jarfile="${jars}/UpdateRecords.jar" manifest="updaterecords-manifest.mf">
+      <fileset dir="${bin}">
+        <include name="com/gint/app/bisis/utils/**"/>
+        <include name="com/gint/app/bisis4/**"/>
+      </fileset>
+      <fileset dir="temp" includes="**"/>
+    </jar>
+-->
+
+    <delete dir="temp"/>
+  </target>
+  
+  <target name="clean.java">
+    <delete dir="${bin}"/>
+  </target>
+
+	<target name="clean.jasper">
+    <delete>
+      <fileset dir="${src}" includes="**/*.jasper"/>
+    </delete>
+  </target>
+  
+  <target name="rebuild.all" depends="clean.java,clean.jasper,compile,jasper,copy.files,build.jars"/>
+  <target name="rebuild.jasper" depends="clean.jasper,jasper,copy.files,build.jars"/>
+  <target name="rebuild.java" depends="clean.java,compile,copy.files,build.jars"/>
+  <target name="build" depends="compile,copy.files,build.jars"/>
+
+</project>

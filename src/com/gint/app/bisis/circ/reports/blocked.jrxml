@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="blocked" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisis"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<field name="FIRST_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[First_name]]></fieldDescription>
+	</field>
+	<field name="LAST_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[Last_name]]></fieldDescription>
+	</field>
+	<field name="REASON" class="java.lang.String">
+		<fieldDescription><![CDATA[Reason]]></fieldDescription>
+	</field>
+	<field name="NOTE" class="java.lang.String">
+		<fieldDescription><![CDATA[Note]]></fieldDescription>
+	</field>
+	<field name="USER_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[User_id]]></fieldDescription>
+	</field>
+	<variable name="rbr" class="java.lang.Integer" resetType="Group" resetGroup="reason" calculation="Count">
+		<variableExpression><![CDATA[$V{COLUMN_COUNT}]]></variableExpression>
+	</variable>
+	<group name="reason">
+		<groupExpression><![CDATA[$F{REASON}]]></groupExpression>
+		<groupHeader>
+		<band height="60">
+			<staticText>
+				<reportElement positionType="Float" x="1" y="19" width="92" height="20"/>
+				<textElement/>
+				<text><![CDATA[Razlog blokiranja:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="93" y="19" width="168" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{REASON}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="40" width="35" height="20"/>
+				<textElement/>
+				<text><![CDATA[R.br.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="76" y="40" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[Broj člana]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="201" y="40" width="96" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ime i prezime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="387" y="40" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[Napomena]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="59" width="555" height="1"/>
+				<graphicElement/>
+			</line>
+		</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement positionType="Float" x="100" y="18" width="349" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Korisnici sa blokiranom karticom]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="Float" x="0" y="19" width="555" height="1"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="5" y="3" width="45" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{rbr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="75" y="3" width="87" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{USER_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="201" y="3" width="178" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FIRST_NAME} + " " + $F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="388" y="3" width="115" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOTE} != null ? $F{NOTE} : " "]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

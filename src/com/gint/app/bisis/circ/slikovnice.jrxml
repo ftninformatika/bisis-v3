@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="slikovnice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisisns2"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dbconn" class="com.gint.app.bisis.circ.DBConnection">
+	</parameter>
+	<queryString><![CDATA[select sl.datum, sl.izdato, sl.vraceno, sl.stanje, sl.bib_id, s.first_name, s.last_name
+from slikovnice sl, single s
+where sl.user_id = s.user_id and sl.user_id = $P{id}]]></queryString>
+	<field name="BIB_ID" class="java.lang.String">
+	</field>
+	<field name="DATUM" class="java.sql.Timestamp">
+	</field>
+	<field name="FIRST_NAME" class="java.lang.String">
+	</field>
+	<field name="IZDATO" class="java.math.BigDecimal">
+	</field>
+	<field name="LAST_NAME" class="java.lang.String">
+	</field>
+	<field name="STANJE" class="java.math.BigDecimal">
+	</field>
+	<field name="VRACENO" class="java.math.BigDecimal">
+	</field>
+	<title>
+		<band height="69">
+			<staticText>
+				<reportElement positionType="Float" x="10" y="45" width="70" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Ime:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="90" y="5" width="110" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="90" y="25" width="110" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="90" y="45" width="110" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="10" y="25" width="70" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Prezime:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="10" y="5" width="70" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Broj člana:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25">
+			<line>
+				<reportElement positionType="Float" x="0" y="24" width="490" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="90" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="180" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="270" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="360" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="8" y="6" width="80" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Datum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="92" y="6" width="86" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Stanje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="184" y="6" width="83" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Izdato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="275" y="6" width="83" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Vraćeno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="363" y="6" width="92" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Bibliotekar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25">
+			<line>
+				<reportElement positionType="Float" x="0" y="24" width="490" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="90" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="180" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="270" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="360" y="3" width="1" height="18"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="9" y="5" width="80" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{dbconn}.fromDatabaseDate($F{DATUM}.toString())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="92" y="5" width="86" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{STANJE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="183" y="5" width="84" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{IZDATO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="274" y="5" width="85" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VRACENO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="362" y="5" width="93" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{BIB_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

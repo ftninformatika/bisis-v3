@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="NabavkaPoNacinu" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="3"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="3"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<parameter name="dateRange" class="java.lang.String">
+	</parameter>
+	<parameter name="today" class="java.lang.String">
+	</parameter>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[@id]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[@name]]></fieldDescription>
+	</field>
+	<field name="udk0s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk0s]]></fieldDescription>
+	</field>
+	<field name="udk0m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk0m]]></fieldDescription>
+	</field>
+	<field name="udk0o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk0o]]></fieldDescription>
+	</field>
+	<field name="udk1s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk1s]]></fieldDescription>
+	</field>
+	<field name="udk1m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk1m]]></fieldDescription>
+	</field>
+	<field name="udk1o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk1o]]></fieldDescription>
+	</field>
+	<field name="udk2s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk2s]]></fieldDescription>
+	</field>
+	<field name="udk2o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk2o]]></fieldDescription>
+	</field>
+	<field name="udk2m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk2m]]></fieldDescription>
+	</field>
+	<field name="udk3s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk3s]]></fieldDescription>
+	</field>
+	<field name="udk3o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk3o]]></fieldDescription>
+	</field>
+	<field name="udk3m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk3m]]></fieldDescription>
+	</field>
+	<field name="udk5s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk5s]]></fieldDescription>
+	</field>
+	<field name="udk5o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk5o]]></fieldDescription>
+	</field>
+	<field name="udk5m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk5m]]></fieldDescription>
+	</field>
+	<field name="udk6s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk6s]]></fieldDescription>
+	</field>
+	<field name="udk6o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk6o]]></fieldDescription>
+	</field>
+	<field name="udk6m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk6m]]></fieldDescription>
+	</field>
+	<field name="udk7s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk7s]]></fieldDescription>
+	</field>
+	<field name="udk7o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk7o]]></fieldDescription>
+	</field>
+	<field name="udk7m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk7m]]></fieldDescription>
+	</field>
+	<field name="udk80s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk80s]]></fieldDescription>
+	</field>
+	<field name="udk80o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk80o]]></fieldDescription>
+	</field>
+	<field name="udk80m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk80m]]></fieldDescription>
+	</field>
+	<field name="udk82s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk82s]]></fieldDescription>
+	</field>
+	<field name="udk82m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk82m]]></fieldDescription>
+	</field>
+	<field name="udk82o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk82o]]></fieldDescription>
+	</field>
+	<field name="udk9s" class="java.lang.String">
+		<fieldDescription><![CDATA[udk9s]]></fieldDescription>
+	</field>
+	<field name="udk9o" class="java.lang.String">
+		<fieldDescription><![CDATA[udk9o]]></fieldDescription>
+	</field>
+	<field name="udk9m" class="java.lang.String">
+		<fieldDescription><![CDATA[udk9m]]></fieldDescription>
+	</field>
+	<field name="sliks" class="java.lang.String">
+		<fieldDescription><![CDATA[sliks]]></fieldDescription>
+	</field>
+	<field name="sliko" class="java.lang.String">
+		<fieldDescription><![CDATA[sliko]]></fieldDescription>
+	</field>
+	<field name="slikm" class="java.lang.String">
+		<fieldDescription><![CDATA[slikm]]></fieldDescription>
+	</field>
+	<field name="totals" class="java.lang.String">
+		<fieldDescription><![CDATA[totals]]></fieldDescription>
+	</field>
+	<field name="totalu" class="java.lang.String">
+		<fieldDescription><![CDATA[totalu]]></fieldDescription>
+	</field>
+	<field name="totalo" class="java.lang.String">
+		<fieldDescription><![CDATA[totalo]]></fieldDescription>
+	</field>
+	<field name="totalm" class="java.lang.String">
+		<fieldDescription><![CDATA[totalm]]></fieldDescription>
+	</field>
+	<field name="po" class="java.lang.String">
+		<fieldDescription><![CDATA[po]]></fieldDescription>
+	</field>
+	<field name="isTotal" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[@isTotal]]></fieldDescription>
+	</field>
+	<title>
+		<band height="57">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="15" width="802" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stanje fonda po UDK]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="729" y="36" width="73" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{today}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="684" y="36" width="43" height="16"/>
+				<textElement/>
+				<text><![CDATA[Na dan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="0" width="255" height="20"/>
+				<textElement/>
+				<text><![CDATA[Narodna biblioteka „Jovan Popović“ Kikinda]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="43">
+			<rectangle>
+				<reportElement positionType="Float" x="627" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="609" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="594" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="558" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="321" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="285" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="201" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="183" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="82" height="43"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="3" y="0" width="76" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ogranak]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="81" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="132" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="183" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="234" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="285" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="336" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="387" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="438" y="0" width="61" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="498" y="0" width="61" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="558" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="609" y="0" width="52" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="660" y="0" width="100" height="25"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="81" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="132" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="234" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="285" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="336" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="387" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="438" y="0" width="61" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[80+81]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="558" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="609" y="0" width="52" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[slikovnice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="660" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ukupno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="498" y="0" width="61" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[82]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="759" y="0" width="43" height="43"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="759" y="0" width="43" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[p.o.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="81" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="99" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="117" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="81" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="99" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="117" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="150" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="150" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="132" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="132" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="168" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="168" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="201" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="219" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="219" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="270" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="252" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="234" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="234" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="252" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="321" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="303" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="303" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="285" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="336" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="354" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="372" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="354" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="372" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="336" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="387" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="405" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="423" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="405" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="387" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="438" y="24" width="25" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="462" y="24" width="22" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="483" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="462" y="24" width="22" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="483" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="438" y="24" width="25" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="498" y="24" width="25" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="522" y="24" width="22" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="543" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="522" y="24" width="22" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="543" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="498" y="24" width="25" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="594" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="576" y="24" width="19" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="558" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="576" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="627" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="609" y="24" width="19" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="645" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="645" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="684" y="24" width="22" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="705" y="24" width="16" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="705" y="24" width="16" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="660" y="24" width="25" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="684" y="24" width="22" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="660" y="24" width="25" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[s]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="720" y="24" width="40" height="19"/>
+				<graphicElement/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="720" y="24" width="40" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[u]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="16">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="802" height="16" backcolor="#dadada">
+					<printWhenExpression><![CDATA[$F{isTotal}]]></printWhenExpression>
+				</reportElement>
+				<graphicElement pen="None"/>
+			</rectangle>
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="2" y="0" width="77" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="81" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="132" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="183" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="234" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="303" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="336" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="372" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="405" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="462" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="522" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="576" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="627" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="720" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="15" width="802" height="1"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="81" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk0s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="132" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk1s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="183" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk2s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="234" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk3s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="285" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk5s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="336" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk6s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="387" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk7s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="438" y="0" width="22" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk80s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="558" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk9s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="609" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sliks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="660" y="0" width="22" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totals}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="498" y="0" width="22" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk82s}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="801" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="759" y="0" width="40" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{po}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="99" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk0m}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="99" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="117" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="117" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk0o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="150" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="168" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="150" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk1m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="168" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk1o}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="201" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk2m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="219" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk2o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="201" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="219" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="252" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="252" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk3m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="270" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk3o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="270" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="285" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="321" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="303" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk5m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="321" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk5o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="354" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="354" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk6m}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="387" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="372" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk6o}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="405" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk7m}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="423" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="423" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk7o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="438" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="483" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="462" y="0" width="19" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk80m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="483" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk80o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="498" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="522" y="0" width="19" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk82m}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="543" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="543" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk82o}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="558" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="576" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk9m}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="594" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="609" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="594" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{udk9o}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="627" y="0" width="16" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{slikm}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="645" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="645" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sliko}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="660" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="684" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="705" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="759" y="0" width="1" height="16"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="684" y="0" width="19" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totalm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="705" y="0" width="13" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totalo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="720" y="0" width="37" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totalu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

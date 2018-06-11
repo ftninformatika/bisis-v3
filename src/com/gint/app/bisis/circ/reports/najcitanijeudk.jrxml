@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="najcitanijeudk" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="510" leftMargin="43" rightMargin="40" topMargin="43" bottomMargin="43">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="bisis"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Units" value="Millimeters"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<reportFont name="Arial" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
+	<parameter name="begdate" class="java.lang.String">
+	</parameter>
+	<parameter name="enddate" class="java.lang.String">
+	</parameter>
+	<parameter name="udk" class="java.lang.String">
+	</parameter>
+	<parameter name="nazivogr" class="java.lang.String">
+	</parameter>
+	<field name="Naslov" class="java.lang.String">
+		<fieldDescription><![CDATA[Naslov]]></fieldDescription>
+	</field>
+	<field name="Autor" class="java.lang.String">
+		<fieldDescription><![CDATA[Autor]]></fieldDescription>
+	</field>
+	<field name="BrIznm" class="java.lang.String">
+		<fieldDescription><![CDATA[BrIznm]]></fieldDescription>
+	</field>
+	<variable name="Variable_1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="89">
+			<staticText>
+				<reportElement positionType="Float" x="165" y="4" width="184" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Najčitanije knjige]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="202" y="22" width="47" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[iz UDK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="149" y="46" width="60" height="15"/>
+				<textElement/>
+				<text><![CDATA[period:   od]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="210" y="46" width="69" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{begdate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="279" y="46" width="16" height="16"/>
+				<textElement/>
+				<text><![CDATA[do]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="295" y="46" width="73" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{enddate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="249" y="22" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{udk}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="74" y="66" width="354" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nazivogr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="44">
+			<line>
+				<reportElement positionType="Float" x="0" y="43" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="40" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="57" y="28" width="1" height="11"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="283" y="28" width="1" height="11"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="425" y="28" width="1" height="11"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="24" width="51" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Red. br.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="59" y="24" width="223" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Naslov]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="285" y="24" width="143" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Autor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="426" y="16" width="83" height="24"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Broj iznajmljivanja]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29">
+			<line>
+				<reportElement positionType="Float" x="0" y="28" width="510" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="57" y="3" width="1" height="23"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="283" y="3" width="1" height="23"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="425" y="3" width="1" height="23"/>
+				<graphicElement/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="4" y="8" width="51" height="15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{Variable_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="59" y="8" width="224" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Naslov} != null ? $F{Naslov} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="283" y="8" width="144" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Autor} != null ? $F{Autor} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="428" y="8" width="81" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{BrIznm}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
